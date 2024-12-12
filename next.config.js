@@ -13,7 +13,7 @@ const ContentSecurityPolicy = `
   media-src *.s3.amazonaws.com;
   connect-src *;
   font-src 'self';
-  frame-src giscus.app
+  frame-src giscus.app www.youtube.com youtube.com;
 `
 
 const securityHeaders = [
@@ -101,6 +101,11 @@ module.exports = () => {
         {
           source: '/blogs/infos/:slug',
           destination: '/blog/infos/:slug',
+          permanent: true,
+        },
+        {
+          source: '/blogs/:slug',
+          destination: '/blog/:slug',
           permanent: true,
         }
       ]
