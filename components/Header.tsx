@@ -7,44 +7,65 @@ import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
 
 const Header = () => {
-  let headerClass = 'flex items-center w-full bg-white dark:bg-gray-950 justify-between py-10'
-  if (siteMetadata.stickyNav) {
-    headerClass += ' sticky top-0 z-50'
-  }
-
   return (
-    <header className={headerClass}>
-      <Link href="/" aria-label={siteMetadata.headerTitle}>
-        <div className="flex items-center justify-between">
-          <div className="mr-3">
-            <Logo />
-          </div>
-          {typeof siteMetadata.headerTitle === 'string' ? (
-            <div className="hidden h-6 text-2xl font-semibold sm:block">
-              {siteMetadata.headerTitle}
+    <header className="w-full bg-beige-50 dark:bg-gray-950">
+      {/* Top bar with logo and controls */}
+      <div className="w-full">
+        <div className="flex items-center justify-between border-b border-beige-100 px-4 py-6 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+          <Link href="/" aria-label={siteMetadata.headerTitle}>
+            <div className="flex items-center justify-between">
+              <div className="mr-3">
+                <Logo />
+              </div>
+              {typeof siteMetadata.headerTitle === 'string' ? (
+                <div className="hidden h-6 text-2xl font-semibold sm:block">
+                  {siteMetadata.headerTitle}
+                </div>
+              ) : (
+                siteMetadata.headerTitle
+              )}
             </div>
-          ) : (
-            siteMetadata.headerTitle
-          )}
+          </Link>
+          <div className="flex items-center space-x-4">
+            <SearchButton />
+            <ThemeSwitch />
+            <MobileNav />
+          </div>
         </div>
-      </Link>
-      <div className="flex items-center space-x-4 leading-5 sm:space-x-6">
-        <div className="no-scrollbar hidden max-w-40 items-center space-x-4 overflow-x-auto sm:flex sm:space-x-6 md:max-w-72 lg:max-w-96">
-          {headerNavLinks
-            .filter((link) => link.href !== '/')
-            .map((link) => (
+      </div>
+
+      {/* Navigation bar */}
+      <div className="w-full bg-white/50 dark:bg-gray-900/50">
+        <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+          <nav className="flex justify-center overflow-x-auto py-4">
+            <div className="flex space-x-8">
               <Link
-                key={link.title}
-                href={link.href}
-                className="block font-medium text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
+                href="/silk-epil-5"
+                className="whitespace-nowrap text-base font-medium tracking-wide text-beige-800 hover:text-primary-500"
               >
-                {link.title}
+                Silk-épil 5
               </Link>
-            ))}
+              <Link
+                href="/silk-epil-7"
+                className="whitespace-nowrap text-base font-medium tracking-wide text-beige-800 hover:text-primary-500"
+              >
+                Silk-épil 7
+              </Link>
+              <Link
+                href="/silk-epil-9"
+                className="whitespace-nowrap text-base font-medium tracking-wide text-beige-800 hover:text-primary-500"
+              >
+                Silk-épil 9
+              </Link>
+              <Link
+                href="/silk-epil-9-flex"
+                className="whitespace-nowrap text-base font-medium tracking-wide text-beige-800 hover:text-primary-500"
+              >
+                Silk-épil 9 Flex
+              </Link>
+            </div>
+          </nav>
         </div>
-        <SearchButton />
-        <ThemeSwitch />
-        <MobileNav />
       </div>
     </header>
   )
