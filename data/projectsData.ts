@@ -7,12 +7,12 @@ interface Project {
 
 const projectsData: Project[] = [
   {
-    title: 'A Search Engine',
-    description: `What if you could look up any information in the world? Webpages, images, videos
-    and more. Google has many features to help you find exactly what you're looking
-    for.`,
-    imgSrc: '/static/images/google.png',
-    href: 'https://www.google.com',
+    title: 'Cyclepil Media Hub',
+    description: `Discover our comprehensive media library featuring epilator repair videos, tutorials, 
+    and visual guides. Access high-quality images and videos to better understand epilator 
+    maintenance and repair techniques.`,
+    imgSrc: '/static/images/logo.png',
+    href: 'https://media.cyclepil.com',
   },
   {
     title: 'The Time Machine',
