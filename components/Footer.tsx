@@ -19,17 +19,30 @@ export default function Footer() {
           <SocialIcon kind="threads" href={siteMetadata.threads} size={6} />
           <SocialIcon kind="medium" href={siteMetadata.medium} size={6} />
         </div>
-        <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
+        <div className="mb-2 flex space-x-2 text-sm text-neutral-500 dark:text-neutral-400">
           <div>{siteMetadata.author}</div>
           <div>{` • `}</div>
           <div>{`© ${new Date().getFullYear()}`}</div>
           <div>{` • `}</div>
-          <Link href="/">{siteMetadata.title}</Link>
+          <Link
+            href="/"
+            className="transition-colors duration-200 hover:text-primary-500 dark:hover:text-primary-400"
+          >
+            {siteMetadata.title}
+          </Link>
           <div>{` • `}</div>
-          <Link href="https://media.cyclepil.com">Media</Link>
+          <Link
+            href="https://media.cyclepil.com"
+            className="transition-colors duration-200 hover:text-primary-500 dark:hover:text-primary-400"
+          >
+            Media
+          </Link>
         </div>
-        <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
-          <Link href="https://github.com/timlrx/tailwind-nextjs-starter-blog">
+        <div className="mb-8 text-sm text-neutral-500 dark:text-neutral-400">
+          <Link
+            href="https://github.com/timlrx/tailwind-nextjs-starter-blog"
+            className="transition-colors duration-200 hover:text-primary-500 dark:hover:text-primary-400"
+          >
             Tailwind Nextjs Theme
           </Link>
         </div>

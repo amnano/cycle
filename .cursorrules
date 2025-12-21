@@ -1,0 +1,42 @@
+# Code Audit Guidelines
+
+## Visual Spacing Audit Checklist
+
+When reviewing or creating UI components, especially inline elements, always check for:
+
+1. **Baseline Gap Issues with inline-block/inline-flex:**
+   - `inline-block` and `inline-flex` elements sit on the baseline by default
+   - This creates unwanted gaps below elements (especially visible with borders)
+   - **Fix:** Use `vertical-align: top` or `middle`, or set `line-height: 1`
+   - **Better:** Use `inline-flex` with `items-center` and `leading-none`
+
+2. **Global CSS Rule Conflicts:**
+   - Check if global styles (like touch target rules) are affecting small UI elements
+   - Tags, badges, and small buttons should NOT inherit min-height/min-width from global rules
+   - **Fix:** Use specific class selectors or :not() pseudo-selectors to exclude small elements
+
+3. **Line-height Spacing:**
+   - Default line-height creates extra vertical space
+   - For compact elements like tags, use `leading-none` or `line-height: 1`
+   - Always verify visual spacing matches intended design
+
+4. **Display Property Selection:**
+   - `inline-block`: Can cause baseline gaps
+   - `inline-flex`: Better for alignment, but still needs vertical-align or line-height fix
+   - `flex`: Use for container elements, not inline elements
+
+## Component-Specific Notes
+
+### Tags Component
+- Must use `.tag` class to exclude from global touch target rules
+- Use `inline-flex` with `items-center` and `leading-none`
+- Set `vertical-align: top` to prevent baseline gaps
+- Override any global min-height/min-width rules
+
+## Visual Testing
+- Always visually inspect components in browser/dev tools
+- Check for unwanted gaps, especially below inline elements
+- Verify spacing matches design specifications
+- Test in both light and dark modes
+
+

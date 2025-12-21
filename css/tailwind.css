@@ -2,6 +2,103 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CSS Variables for Brand Colors */
+@layer base {
+  :root {
+    --color-primary: #1a4fff;
+    --color-primary-secondary: #0036cc;
+    --color-primary-accent: #e6f0ff;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-primary: #4d7aff;
+      --color-primary-secondary: #1a4fff;
+      --color-primary-accent: #1a1a2e;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Shadow System */
+@layer utilities {
+  .shadow-minimal {
+    box-shadow:
+      0 1px 3px 0 rgb(0 0 0 / 0.1),
+      0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+
+  .shadow-subtle {
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 0.1),
+      0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+
+  .shadow-moderate {
+    box-shadow:
+      0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+}
+
+/* Typography Hierarchy */
+@layer components {
+  .hierarchy-primary {
+    font-size: 2.25rem;
+    line-height: 1.2;
+    letter-spacing: -0.05em;
+    font-weight: 700;
+  }
+
+  .hierarchy-secondary {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    letter-spacing: -0.025em;
+    font-weight: 600;
+  }
+
+  .hierarchy-tertiary {
+    font-size: 1.125rem;
+    line-height: 1.4;
+    letter-spacing: -0.025em;
+    font-weight: 500;
+  }
+
+  /* Article Content Styles */
+  .article-content {
+    max-width: 65ch;
+    line-height: 1.8;
+    contain: layout style paint;
+  }
+
+  .article-content img {
+    content-visibility: auto;
+  }
+
+  /* Card Styles */
+  .card {
+    @apply shadow-minimal rounded-xl border border-neutral-200 bg-white;
+    @apply dark:border-neutral-800 dark:bg-neutral-900;
+    @apply transition-all duration-200 ease-smooth;
+    contain: layout style paint;
+  }
+
+  .card:hover {
+    @apply shadow-subtle scale-[1.02];
+  }
+}
+
+/* Base Styles */
 .task-list-item::before {
   @apply hidden;
 }
@@ -11,7 +108,7 @@
 }
 
 .footnotes {
-  @apply mt-12 border-t border-gray-200 pt-8 dark:border-gray-700;
+  @apply mt-12 border-t border-neutral-200 pt-8 dark:border-neutral-700;
 }
 
 .data-footnote-backref {
@@ -47,6 +144,7 @@ input:-webkit-autofill:focus {
   opacity: 0;
   margin-left: -24px;
   padding-right: 4px;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .content-header:hover .content-header-link,
@@ -57,4 +155,25 @@ input:-webkit-autofill:focus {
 .linkicon {
   display: inline-block;
   vertical-align: middle;
+}
+
+/* Touch Targets - Only apply to interactive elements that need minimum touch target size */
+/* Exclude tags and other small UI elements */
+a:not(.tag):not([class*='Tag']),
+button:not(.tag):not([class*='Tag']) {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tag-specific overrides to prevent baseline gaps and unwanted spacing */
+.tag {
+  min-height: auto !important;
+  min-width: auto !important;
+  vertical-align: top;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
 }
