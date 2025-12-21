@@ -64,7 +64,16 @@ export default [
       'react/no-unescaped-entities': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/no-var-requires': 'off',
+      '@typescript-eslint/no-require-imports': 'off',
       '@typescript-eslint/ban-ts-comment': 'off',
+    },
+  },
+  // Allow require() in config files
+  {
+    files: ['*.config.js', '*.config.mjs', '*.config.ts', '*.config.cjs'],
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
+      '@typescript-eslint/no-var-requires': 'off',
     },
   },
 ]
